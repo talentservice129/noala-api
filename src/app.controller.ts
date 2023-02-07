@@ -1,5 +1,13 @@
 import { Controller, Get, Post, Query, Session } from '@nestjs/common';
+import { ApiProperty } from '@nestjs/swagger/dist';
 import { AppService, DogImageResponse } from './app.service';
+
+class AddToFavQueryDto {
+  @ApiProperty({
+    description: 'URL of the image to add to list',
+  })
+  image: string;
+}
 
 @Controller()
 export class AppController {
@@ -18,7 +26,7 @@ export class AppController {
   }
 
   @Post()
-  addImageToFav(@Session() session, @Query() query) {
+  addImageToFav(@Session() session, @Query() query: AddToFavQueryDto) {
     if (!session.favlist) {
       session.favlist = [];
     }
