@@ -8,6 +8,9 @@
     ],
     "routes": [
         {
+            "src": "/api/(.*)"
+        },
+        {
             "src": "/(.*)",
             "dest": "src/main.ts",
             "methods": [
