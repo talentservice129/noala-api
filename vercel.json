@@ -9,7 +9,10 @@
     "routes": [
         {
             "src": "/api/(.*)",
-            "dest": "/api/"
+            "headers": {
+                "Cache-Control": "public, max-age=31556952, immutable"
+            },
+            "continue": true
         },
         {
             "src": "/(.*)",
